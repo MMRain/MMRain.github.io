@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="layer,圆角," />
 
 
 
@@ -93,16 +93,17 @@
 
 
 
-<meta name="description" content="NSUserDefaults支持的数据类型有NSString、 NSNumber、NSDate、 NSArray、NSDictionary、BOOL、NSInteger、NSFloat等系统定义的数据类型，如果要存放自定义的对象（如自定义的类对象），则必须将其转换成NSData存储.  开发中遇到 NSUserDefaults 保存时报错，是因为需要保存的是一个数组，数组元素为字典，字典value">
+<meta name="description" content="iOS控件部分圆角设置">
+<meta name="keywords" content="layer,圆角">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NSUserDefaults保存报错">
-<meta property="og:url" content="http://yoursite.com/2017/10/09/NSUserDefaults保存报错/index.html">
+<meta property="og:title" content="iOS部分圆角">
+<meta property="og:url" content="http://yoursite.com/2017/10/11/iOS部分圆角/index.html">
 <meta property="og:site_name" content="MRain">
-<meta property="og:description" content="NSUserDefaults支持的数据类型有NSString、 NSNumber、NSDate、 NSArray、NSDictionary、BOOL、NSInteger、NSFloat等系统定义的数据类型，如果要存放自定义的对象（如自定义的类对象），则必须将其转换成NSData存储.  开发中遇到 NSUserDefaults 保存时报错，是因为需要保存的是一个数组，数组元素为字典，字典value">
-<meta property="og:updated_time" content="2017-10-09T06:32:01.000Z">
+<meta property="og:description" content="iOS控件部分圆角设置">
+<meta property="og:updated_time" content="2017-10-11T07:07:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NSUserDefaults保存报错">
-<meta name="twitter:description" content="NSUserDefaults支持的数据类型有NSString、 NSNumber、NSDate、 NSArray、NSDictionary、BOOL、NSInteger、NSFloat等系统定义的数据类型，如果要存放自定义的对象（如自定义的类对象），则必须将其转换成NSData存储.  开发中遇到 NSUserDefaults 保存时报错，是因为需要保存的是一个数组，数组元素为字典，字典value">
+<meta name="twitter:title" content="iOS部分圆角">
+<meta name="twitter:description" content="iOS控件部分圆角设置">
 
 
 
@@ -130,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/09/NSUserDefaults保存报错/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/11/iOS部分圆角/"/>
 
 
 
 
 
-  <title>NSUserDefaults保存报错 | MRain</title>
+  <title>iOS部分圆角 | MRain</title>
   
 
 
@@ -255,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/09/NSUserDefaults保存报错/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/11/iOS部分圆角/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -272,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NSUserDefaults保存报错</h1>
+          <h1 class="post-title" itemprop="name headline">iOS部分圆角</h1>
         
 
         <div class="post-meta">
@@ -284,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T14:26:48+08:00">
-                2017-10-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T12:17:10+08:00">
+                2017-10-11
               </time>
             
 
@@ -319,10 +320,23 @@
       
 
       
-        <pre><code>NSUserDefaults支持的数据类型有NSString、 NSNumber、NSDate、 NSArray、NSDictionary、BOOL、NSInteger、NSFloat等系统定义的数据类型，如果要存放自定义的对象（如自定义的类对象），则必须将其转换成NSData存储.
+        <p>  iOS控件部分圆角设置</p>
+  <a id="more"></a>
+<p>  如果设置四个角所有的圆角直接用layer的cornerRadius设置即可。</p>
+<p>  但是只设置两个或三个cornerRadius就不能用了。</p>
+<p>  但是可以用 UIBezierPath 来设置</p>
+<p>  UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(120, 10, 80, 80)];<br>  view2.backgroundColor = [UIColor redColor];<br>  [self.view addSubview:view2];</p>
+<p>  UIBezierPath <em>maskPath = [UIBezierPath bezierPathWithRoundedRect:view2.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(10, 10)];<br>  CAShapeLayer </em>maskLayer = [[CAShapeLayer alloc] init];<br>  maskLayer.frame = view2.bounds;<br>  maskLayer.path = maskPath.CGPath;<br>  view2.layer.mask = maskLayer;</p>
+<p>  以上代码设置 View2 下方两个圆角 圆角度数为 10</p>
+<p>  其中，<br>  byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight<br>  指定了需要成为圆角的角。该参数是UIRectCorner类型的，可选的值有：</p>
+<ul>
+<li>UIRectCornerTopLeft</li>
+<li>UIRectCornerTopRight</li>
+<li>UIRectCornerBottomLeft</li>
+<li>UIRectCornerBottomRight</li>
+<li>UIRectCornerAllCorners</li>
+</ul>
 
-开发中遇到 NSUserDefaults 保存时报错，是因为需要保存的是一个数组，数组元素为字典，字典value里包含 &lt;null&gt; ,因此报错。
-</code></pre>
       
     </div>
 
@@ -349,6 +363,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/layer/" rel="tag"># layer</a>
+          
+            <a href="/tags/圆角/" rel="tag"># 圆角</a>
+          
+        </div>
+      
 
       
       
@@ -358,8 +380,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/09/ios7下面用autolayout报错/" rel="next" title="ios7下面用autolayout报错">
-                <i class="fa fa-chevron-left"></i> ios7下面用autolayout报错
+              <a href="/2017/10/09/NSUserDefaults保存报错/" rel="next" title="NSUserDefaults保存报错">
+                <i class="fa fa-chevron-left"></i> NSUserDefaults保存报错
               </a>
             
           </div>
@@ -367,10 +389,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/11/iOS部分圆角/" rel="prev" title="iOS部分圆角">
-                iOS部分圆角 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
