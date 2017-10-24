@@ -253,6 +253,120 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/24/取出当前的控制器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MRain">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/24/取出当前的控制器/" itemprop="url">取出当前的控制器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T14:30:13+08:00">
+                2017-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>OC 取出APP当前最上层的controller
+
+&lt;!--more--&gt;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> *  适用于tabbar所有的自控制器都是navgationvc</div><div class="line"> */</div><div class="line">+ (UIViewController *)getCurrentVCsss&#123;</div><div class="line">    </div><div class="line">    UIViewController *result = nil;</div><div class="line">    UIWindow * window = [[UIApplication sharedApplication] keyWindow];</div><div class="line">    //app默认windowLevel是UIWindowLevelNormal，如果不是，找到UIWindowLevelNormal的</div><div class="line">    if (window.windowLevel != UIWindowLevelNormal)</div><div class="line">    &#123;</div><div class="line">        NSArray *windows = [[UIApplication sharedApplication] windows];</div><div class="line">        for(UIWindow * tmpWin in windows)</div><div class="line">        &#123;</div><div class="line">            if (tmpWin.windowLevel == UIWindowLevelNormal)</div><div class="line">            &#123;</div><div class="line">                window = tmpWin;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    id  nextResponder = nil;</div><div class="line">    UIViewController *appRootVC=window.rootViewController;</div><div class="line">    </div><div class="line">    //如果是present上来的appRootVC.presentedViewController 不为nil</div><div class="line">    if (appRootVC.presentedViewController) &#123;</div><div class="line">        nextResponder = appRootVC.presentedViewController;</div><div class="line">    &#125;else&#123;</div><div class="line">        UIView *frontView = [[window subviews] objectAtIndex:0];</div><div class="line">        nextResponder = [frontView nextResponder];  // &lt;span style=&quot;font-family: Arial, Helvetica, sans-serif;&quot;&gt;//  这方法下面有详解    &lt;/span&gt;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    if ([nextResponder isKindOfClass:[UITabBarController class]])&#123;</div><div class="line">        UITabBarController * tabbar = (UITabBarController *)nextResponder;</div><div class="line">        UINavigationController * nav = (UINavigationController *)tabbar.viewControllers[tabbar.selectedIndex];</div><div class="line">        //        UINavigationController * nav = tabbar.selectedViewController ; 上下两种写法都行</div><div class="line">        result=nav.childViewControllers.lastObject;</div><div class="line">        </div><div class="line">    &#125;else if ([nextResponder isKindOfClass:[UINavigationController class]])&#123;</div><div class="line">        UIViewController * nav = (UIViewController *)nextResponder;</div><div class="line">        result = nav.childViewControllers.lastObject;</div><div class="line">    &#125;else&#123;</div><div class="line">        result = nextResponder;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/17/取消按钮高亮效果/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -872,7 +986,7 @@ ios7下面用autolayout报错类似  *** Assertion failure in -[XX layoutSublaye
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
