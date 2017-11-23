@@ -272,7 +272,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/23/根据crash堆栈信息定位崩溃代码位置/" itemprop="url">根据crash堆栈信息定位崩溃代码位置</a></h1>
+                <a class="post-title-link" href="/2017/11/23/根据crash堆栈信息定位崩溃代码位置/" itemprop="url">iOS根据crash堆栈信息定位崩溃代码位置</a></h1>
         
 
         <div class="post-meta">
@@ -320,37 +320,14 @@
 
       
         
-          
-            <pre><code>根据crash收集的崩溃日志。
-
-&lt;!--more--&gt;
-
-1、 *首先收集崩溃日志和.dSYM文件* 
-    dSYM文件获取步骤：
-    1.1、获取.xcarchive文件， .xcarchive文件可以通过点击Xcode上的 window -&gt; Organizer  的archive列表中找到。
-    1.2、右击.xcarchive -&gt; 获取包内容 -&gt; dSYM文件夹 -&gt; xxx.app.dSYM (如果dSYM文件夹为空，需要在Xcode设置 Build Settings -&gt; Build Options -&gt; Debug Information Format 修改为 DWARF with dSYM File)。
-    崩溃日志：
-    获取手机本地崩溃日志软件：iExplorer 付费但是可以免费试用。
-
-2、 *找到符号表*
-    右击 yourapp.app.dSYM -&gt; 显示包内容  -&gt; Contents文件夹 -&gt; Rescoures文件夹 -&gt; DWARF文件夹 
-    终端输入： cd DWARF文件夹路径。
-
-3、 *解析模块地址和方法地址*
-    例如：0x00000001000e87bc yourapp + 1144 
-    0x00000001000e87bc 为方法地址，1144 为偏移量。
-    模块地址 =  方法地址 - 偏移量 (偏移量为十进制需要转换成十六进制)。
-
-    终端输入命令：xcrun atos [-arch 架构名] [-o 符号表] [-l 模块地址] [方法地址]
-
-    例如：xcrun atos -arch arm64 -o teyuntong -l 0x100084000 0x100089e18
-
-    bogon:DWARF wangxilei$ xcrun atos -arch arm64 -o teyuntong -l 0x100084000 0x100089e18
-    -[TYTHaveGoodViewController viewDidLoad] (in teyuntong) (TYTHaveGoodViewController.m:98)
-
-// dSYM文件必须和crash日志严格对应，如果定位不到可能是地址不对，可直接尝试模块地址或方法地址。
-</code></pre>
-          
+          <p>根据crash收集的崩溃日志。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/23/根据crash堆栈信息定位崩溃代码位置/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -459,12 +436,15 @@
 
       
         
-          
-            <pre><code>OC 取出APP当前最上层的controller
-
-&lt;!--more--&gt;
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> *  适用于tabbar所有的自控制器都是navgationvc</div><div class="line"> */</div><div class="line">+ (UIViewController *)getCurrentVCsss&#123;</div><div class="line">    </div><div class="line">    UIViewController *result = nil;</div><div class="line">    UIWindow * window = [[UIApplication sharedApplication] keyWindow];</div><div class="line">    //app默认windowLevel是UIWindowLevelNormal，如果不是，找到UIWindowLevelNormal的</div><div class="line">    if (window.windowLevel != UIWindowLevelNormal)</div><div class="line">    &#123;</div><div class="line">        NSArray *windows = [[UIApplication sharedApplication] windows];</div><div class="line">        for(UIWindow * tmpWin in windows)</div><div class="line">        &#123;</div><div class="line">            if (tmpWin.windowLevel == UIWindowLevelNormal)</div><div class="line">            &#123;</div><div class="line">                window = tmpWin;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    id  nextResponder = nil;</div><div class="line">    UIViewController *appRootVC=window.rootViewController;</div><div class="line">    </div><div class="line">    //如果是present上来的appRootVC.presentedViewController 不为nil</div><div class="line">    if (appRootVC.presentedViewController) &#123;</div><div class="line">        nextResponder = appRootVC.presentedViewController;</div><div class="line">    &#125;else&#123;</div><div class="line">        UIView *frontView = [[window subviews] objectAtIndex:0];</div><div class="line">        nextResponder = [frontView nextResponder];  // &lt;span style=&quot;font-family: Arial, Helvetica, sans-serif;&quot;&gt;//  这方法下面有详解    &lt;/span&gt;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    if ([nextResponder isKindOfClass:[UITabBarController class]])&#123;</div><div class="line">        UITabBarController * tabbar = (UITabBarController *)nextResponder;</div><div class="line">        UINavigationController * nav = (UINavigationController *)tabbar.viewControllers[tabbar.selectedIndex];</div><div class="line">        //        UINavigationController * nav = tabbar.selectedViewController ; 上下两种写法都行</div><div class="line">        result=nav.childViewControllers.lastObject;</div><div class="line">        </div><div class="line">    &#125;else if ([nextResponder isKindOfClass:[UINavigationController class]])&#123;</div><div class="line">        UIViewController * nav = (UIViewController *)nextResponder;</div><div class="line">        result = nav.childViewControllers.lastObject;</div><div class="line">    &#125;else&#123;</div><div class="line">        result = nextResponder;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
+          <pre><code>OC 取出APP当前最上层的controller
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/24/取出当前的控制器/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -918,16 +898,15 @@
 
       
         
-          
-            <pre><code> NSUserDefaults保存报错问题
-
- &lt;!-- more --&gt;
-
-NSUserDefaults支持的数据类型有NSString、 NSNumber、NSDate、 NSArray、NSDictionary、BOOL、NSInteger、NSFloat等系统定义的数据类型，如果要存放自定义的对象（如自定义的类对象），则必须将其转换成NSData存储.
-
-开发中遇到 NSUserDefaults 保存时报错，是因为需要保存的是一个数组，数组元素为字典，字典value里包含 &lt;null&gt; ,因此报错。
+          <pre><code>NSUserDefaults保存报错问题
 </code></pre>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/09/NSUserDefaults保存报错/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1036,18 +1015,15 @@ NSUserDefaults支持的数据类型有NSString、 NSNumber、NSDate、 NSArray�
 
       
         
-          
-            <pre><code>ios7下面用autolayout报错类似  *** Assertion failur
-
-&lt;!-- more --&gt;
-
-ios7下面用autolayout报错类似  *** Assertion failure in -[XX layoutSublayersOfLayer:], /SourceCache/UIKit/UIKit-2935.138/UIView. 错误
-
-网上查的大部分都是在 layoutsybviews 方法的最下面加上【super layoutsubviews】，我尝试过了但是只加一个不管用。
-
-解决方案:在自定义控件的 layoutsybviews 方法的最下面加上【super layoutsubviews】【self lauoutifneed】 这两个方法。
+          <pre><code>ios7下面用autolayout报错类似  *** Assertion failur
 </code></pre>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/09/ios7下面用autolayout报错/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
