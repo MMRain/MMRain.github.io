@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="NSUserDefaults," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -93,17 +93,12 @@
 
 
 
-<meta name="description" content="NSUserDefaults保存报错问题   &amp;lt;!-- more --&amp;gt;  NSUserDefaults支持的数据类型有NSString、 NSNumber、NSDate、 NSArray、NSDictionary、BOOL、NSInteger、NSFloat等系统定义的数据类型，如果要存放自定义的对象（如自定义的类对象），则必须将其转换成NSData存储.  开发中遇到 NSUse">
-<meta name="keywords" content="NSUserDefaults">
-<meta property="og:type" content="article">
-<meta property="og:title" content="NSUserDefaults保存报错">
-<meta property="og:url" content="http://yoursite.com/2017/10/09/NSUserDefaults保存报错/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MRain">
+<meta property="og:url" content="http://yoursite.com/archives/2017/11/index.html">
 <meta property="og:site_name" content="MRain">
-<meta property="og:description" content="NSUserDefaults保存报错问题   &amp;lt;!-- more --&amp;gt;  NSUserDefaults支持的数据类型有NSString、 NSNumber、NSDate、 NSArray、NSDictionary、BOOL、NSInteger、NSFloat等系统定义的数据类型，如果要存放自定义的对象（如自定义的类对象），则必须将其转换成NSData存储.  开发中遇到 NSUse">
-<meta property="og:updated_time" content="2017-10-17T06:53:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NSUserDefaults保存报错">
-<meta name="twitter:description" content="NSUserDefaults保存报错问题   &amp;lt;!-- more --&amp;gt;  NSUserDefaults支持的数据类型有NSString、 NSNumber、NSDate、 NSArray、NSDictionary、BOOL、NSInteger、NSFloat等系统定义的数据类型，如果要存放自定义的对象（如自定义的类对象），则必须将其转换成NSData存储.  开发中遇到 NSUse">
+<meta name="twitter:title" content="MRain">
 
 
 
@@ -131,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/09/NSUserDefaults保存报错/"/>
+  <link rel="canonical" href="http://yoursite.com/archives/2017/11/"/>
 
 
 
 
 
-  <title>NSUserDefaults保存报错 | MRain</title>
+  <title>归档 | MRain</title>
   
 
 
@@ -162,7 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -246,158 +241,66 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/09/NSUserDefaults保存报错/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MRain">
+    <span class="archive-page-counter">
+      
+      
+      
+        
+      
+      嗯..! 目前共计 7 篇日志。 继续努力。
     </span>
 
     
-      <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">NSUserDefaults保存报错</h1>
-        
+      
+      
+      
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
+      
+        
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+        </div>
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2017/11/23/根据crash堆栈信息定位崩溃代码位置/" itemprop="url">
               
-                <span class="post-meta-item-text">发表于</span>
+                <span itemprop="name">根据crash堆栈信息定位崩溃代码位置</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T14:26:48+08:00">
-                2017-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <pre><code> NSUserDefaults保存报错问题
-
- &lt;!-- more --&gt;
-
-NSUserDefaults支持的数据类型有NSString、 NSNumber、NSDate、 NSArray、NSDictionary、BOOL、NSInteger、NSFloat等系统定义的数据类型，如果要存放自定义的对象（如自定义的类对象），则必须将其转换成NSData存储.
-
-开发中遇到 NSUserDefaults 保存时报错，是因为需要保存的是一个数组，数组元素为字典，字典value里包含 &lt;null&gt; ,因此报错。
-</code></pre>
-      
-    </div>
-
-    <div>
-      
+            </a>
         
+      </h2>
 
-      
-    </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-11-23T10:51:49+08:00"
+              content="2017-11-23" >
+          11-23
+        </time>
+      </div>
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/NSUserDefaults/" rel="tag"># NSUserDefaults</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/10/09/ios7下面用autolayout报错/" rel="next" title="ios7下面用autolayout报错">
-                <i class="fa fa-chevron-left"></i> ios7下面用autolayout报错
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/11/iOS部分圆角/" rel="prev" title="iOS部分圆角">
-                iOS部分圆角 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+    
+
+  </section>
+
+  
+
 
 
           </div>
@@ -405,10 +308,6 @@ NSUserDefaults支持的数据类型有NSString、 NSNumber、NSDate、 NSArray�
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -602,9 +501,11 @@ NSUserDefaults支持的数据类型有NSString、 NSNumber、NSDate、 NSArray�
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
 
 
   

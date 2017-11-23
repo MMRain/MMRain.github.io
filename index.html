@@ -253,6 +253,145 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/23/根据crash堆栈信息定位崩溃代码位置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MRain">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/23/根据crash堆栈信息定位崩溃代码位置/" itemprop="url">根据crash堆栈信息定位崩溃代码位置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T10:51:49+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>根据crash收集的崩溃日志。
+
+&lt;!--more--&gt;
+
+1、 *首先收集崩溃日志和.dSYM文件* 
+    dSYM文件获取步骤：
+    1.1、获取.xcarchive文件， .xcarchive文件可以通过点击Xcode上的 window -&gt; Organizer  的archive列表中找到。
+    1.2、右击.xcarchive -&gt; 获取包内容 -&gt; dSYM文件夹 -&gt; xxx.app.dSYM (如果dSYM文件夹为空，需要在Xcode设置 Build Settings -&gt; Build Options -&gt; Debug Information Format 修改为 DWARF with dSYM File)。
+    崩溃日志：
+    获取手机本地崩溃日志软件：iExplorer 付费但是可以免费试用。
+
+2、 *找到符号表*
+    右击 yourapp.app.dSYM -&gt; 显示包内容  -&gt; Contents文件夹 -&gt; Rescoures文件夹 -&gt; DWARF文件夹 
+    终端输入： cd DWARF文件夹路径。
+
+3、 *解析模块地址和方法地址*
+    例如：0x00000001000e87bc yourapp + 1144 
+    0x00000001000e87bc 为方法地址，1144 为偏移量。
+    模块地址 =  方法地址 - 偏移量 (偏移量为十进制需要转换成十六进制)。
+
+    终端输入命令：xcrun atos [-arch 架构名] [-o 符号表] [-l 模块地址] [方法地址]
+
+    例如：xcrun atos -arch arm64 -o teyuntong -l 0x100084000 0x100089e18
+
+    bogon:DWARF wangxilei$ xcrun atos -arch arm64 -o teyuntong -l 0x100084000 0x100089e18
+    -[TYTHaveGoodViewController viewDidLoad] (in teyuntong) (TYTHaveGoodViewController.m:98)
+
+// dSYM文件必须和crash日志严格对应，如果定位不到可能是地址不对，可直接尝试模块地址或方法地址。
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/24/取出当前的控制器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -986,7 +1125,7 @@ ios7下面用autolayout报错类似  *** Assertion failure in -[XX layoutSublaye
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -999,7 +1138,7 @@ ios7下面用autolayout报错类似  *** Assertion failure in -[XX layoutSublaye
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
