@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="iOS控件部分圆角设置">
+<meta name="description" content="sudo xcode-select --switch /Applications/Xcode9.app">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS部分圆角">
-<meta property="og:url" content="http://yoursite.com/2017/10/11/iOS部分圆角/index.html">
+<meta property="og:title" content="更换默认Xcode">
+<meta property="og:url" content="http://yoursite.com/2017/12/11/更换默认Xcode/index.html">
 <meta property="og:site_name" content="MRain">
-<meta property="og:description" content="iOS控件部分圆角设置">
-<meta property="og:updated_time" content="2017-11-23T03:38:24.553Z">
+<meta property="og:description" content="sudo xcode-select --switch /Applications/Xcode9.app">
+<meta property="og:updated_time" content="2017-12-11T01:37:41.897Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS部分圆角">
-<meta name="twitter:description" content="iOS控件部分圆角设置">
+<meta name="twitter:title" content="更换默认Xcode">
+<meta name="twitter:description" content="sudo xcode-select --switch /Applications/Xcode9.app">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/11/iOS部分圆角/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/11/更换默认Xcode/"/>
 
 
 
 
 
-  <title>iOS部分圆角 | MRain</title>
+  <title>更换默认Xcode | MRain</title>
   
 
 
@@ -255,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/11/iOS部分圆角/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/11/更换默认Xcode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iOS部分圆角</h1>
+          <h1 class="post-title" itemprop="name headline">更换默认Xcode</h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T12:17:10+08:00">
-                2017-10-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T09:37:08+08:00">
+                2017-12-11
               </time>
             
 
@@ -319,15 +319,8 @@
       
 
       
-        <p>  iOS控件部分圆角设置</p>
-<a id="more"></a>
-<p>  如果设置四个角所有的圆角直接用layer的cornerRadius设置即可。</p>
-<p>  但是只设置两个或三个cornerRadius就不能用了。</p>
-<p>  但是可以用 UIBezierPath 来设置</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(120, 10, 80, 80)];</div><div class="line">view2.backgroundColor = [UIColor redColor];</div><div class="line">[self.view addSubview:view2];</div><div class="line">  </div><div class="line">UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:view2.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(10, 10)];</div><div class="line"></div><div class="line">CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];</div><div class="line">maskLayer.frame = view2.bounds;</div><div class="line">maskLayer.path = maskPath.CGPath;</div><div class="line">view2.layer.mask = maskLayer;</div></pre></td></tr></table></figure>
-<p>  以上代码设置 View2 下方两个圆角 圆角度数为 10</p>
-<p>  其中，<br>  byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight<br>  指定了需要成为圆角的角。该参数是UIRectCorner类型的，可选的值有：<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">* UIRectCornerTopLeft</div><div class="line">* UIRectCornerTopRight</div><div class="line">* UIRectCornerBottomLeft</div><div class="line">* UIRectCornerBottomRight</div><div class="line">* UIRectCornerAllCorners</div></pre></td></tr></table></figure></p>
-
+        <pre><code>sudo xcode-select --switch /Applications/Xcode9.app
+</code></pre>
       
     </div>
 
@@ -363,8 +356,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/09/NSUserDefaults保存报错/" rel="next" title="NSUserDefaults保存报错">
-                <i class="fa fa-chevron-left"></i> NSUserDefaults保存报错
+              <a href="/2017/11/23/iOS收集crash日志/" rel="next" title="iOS收集crash日志">
+                <i class="fa fa-chevron-left"></i> iOS收集crash日志
               </a>
             
           </div>
@@ -372,10 +365,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/17/JSON字典和JSON字符串相互转换/" rel="prev" title="JSON字典和JSON字符串相互转换">
-                JSON字典和JSON字符串相互转换 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
