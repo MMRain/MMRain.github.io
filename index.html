@@ -322,11 +322,11 @@
         
           
             <pre><code>线程锁扫盲！
-==
+========
 再多线程开发的时候，为了保证线程有序的执行线程锁是必不可少的，iOS最常用的锁有 **NSLock，NSConditionLock，NSRecursiveLock，NSCondition** 
 
 NSLock
---
+---------
 NSLock是最熟悉的也是功能最简单易懂的，简单介绍一下NSLock的使用方法和注意事项
 
 在线程1执行的时候，另外起了一个线程2，如何保证在线程一的内容结束之前，让线程二进行等待？这就得用线程锁NSLock 
@@ -344,7 +344,7 @@ NSLock是最熟悉的也是功能最简单易懂的，简单介绍一下NSLock�
 &gt; You should not use this class to implement a recursive lock. Calling the lock method twice on the same thread will lock up your thread permanently. Use the NSRecursiveLock class to implement recursive locks instead.
 
 NSRecursiveLock
---
+----------------
 NSRecursiveLock 是递归锁，NSRecursiveLock 可以在一个线程中重复加锁，NSRecursiveLock 会记录上锁和解锁的次数，当次数一致的时候，就会释放锁，其它线程才就可以上锁成功。
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">   //  NSLock *lock = [[NSLock alloc]init];</div><div class="line">       NSRecursiveLock *lock = [[NSRecursiveLock alloc]init];</div><div class="line">       </div><div class="line">       dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</div><div class="line">           static void (^RecursiveFuc)(int);</div><div class="line">           RecursiveFuc = ^(int value) &#123;</div><div class="line">           [lock lock];</div><div class="line">           if (value &gt; 0) &#123;</div><div class="line">               NSLog(@&quot;线程一执行次数 %d&quot;, value);</div><div class="line">               sleep(2);</div><div class="line">               RecursiveFuc(value - 1);</div><div class="line">           &#125;</div><div class="line">           [lock unlock];</div><div class="line">           &#125;;</div><div class="line">           </div><div class="line">           RecursiveFuc(5);</div><div class="line">       &#125;);</div><div class="line">       </div><div class="line">       dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</div><div class="line">           sleep(3);</div><div class="line">           [lock lock];</div><div class="line">           NSLog(@&quot;线程二开始执行&quot;);</div><div class="line">           [lock unlock];</div><div class="line">       </div><div class="line">       &#125;);</div><div class="line"></div><div class="line">   2018-07-25 21:49:39.314559+0800 Lock[2782:161559] 线程一执行次数 5</div><div class="line">2018-07-25 21:49:41.316843+0800 Lock[2782:161559] 线程一执行次数 4</div><div class="line">2018-07-25 21:49:43.318406+0800 Lock[2782:161559] 线程一执行次数 3</div><div class="line">2018-07-25 21:49:45.320976+0800 Lock[2782:161559] 线程一执行次数 2</div><div class="line">2018-07-25 21:49:47.323096+0800 Lock[2782:161559] 线程一执行次数 1</div><div class="line">2018-07-25 21:49:49.326708+0800 Lock[2782:161561] 线程二开始执行</div><div class="line"></div><div class="line">换成NSLock之后的结果</div><div class="line"></div><div class="line">2018-07-25 21:52:25.722030+0800 Lock[2797:165586] 线程一执行次数 5</div></pre></td></tr></table></figure>
