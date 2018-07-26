@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="##线程锁扫盲！##">
+<meta name="description" content="线程锁扫盲！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS线程锁">
 <meta property="og:url" content="http://yoursite.com/2018/07/25/iOS线程锁/index.html">
 <meta property="og:site_name" content="MRain">
-<meta property="og:description" content="##线程锁扫盲！##">
-<meta property="og:updated_time" content="2018-07-26T13:02:51.680Z">
+<meta property="og:description" content="线程锁扫盲！">
+<meta property="og:updated_time" content="2018-07-26T13:04:32.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS线程锁">
-<meta name="twitter:description" content="##线程锁扫盲！##">
+<meta name="twitter:description" content="线程锁扫盲！">
 
 
 
@@ -319,7 +319,7 @@
       
 
       
-        <p>##线程锁扫盲！##<br><a id="more"></a></p>
+        <h1 id="线程锁扫盲！"><a href="#线程锁扫盲！" class="headerlink" title="线程锁扫盲！"></a>线程锁扫盲！</h1><a id="more"></a>
 <p>再多线程开发的时候，为了保证线程有序的执行线程锁是必不可少的，iOS最常用的锁有 <strong>NSLock，NSConditionLock，NSRecursiveLock，NSCondition</strong> </p>
 <h2 id="NSLock"><a href="#NSLock" class="headerlink" title="NSLock"></a>NSLock</h2><p>NSLock是最熟悉的也是功能最简单易懂的，简单介绍一下NSLock的使用方法和注意事项</p>
 <p>在线程1执行的时候，另外起了一个线程2，如何保证在线程一的内容结束之前，让线程二进行等待？这就得用线程锁NSLock </p>
@@ -530,7 +530,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NSLock"><span class="nav-number">1.</span> <span class="nav-text">NSLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSRecursiveLock"><span class="nav-number">2.</span> <span class="nav-text">NSRecursiveLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSConditionLock"><span class="nav-number">3.</span> <span class="nav-text">NSConditionLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSCondition"><span class="nav-number">4.</span> <span class="nav-text">NSCondition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronized"><span class="nav-number">5.</span> <span class="nav-text"> @synchronized</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dispatch-semaphore"><span class="nav-number">6.</span> <span class="nav-text"> dispatch_semaphore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSSpinLock"><span class="nav-number">7.</span> <span class="nav-text"> OSSpinLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pthread-mutex"><span class="nav-number">8.</span> <span class="nav-text">pthread_mutex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pthread-mutex-recursive"><span class="nav-number">9.</span> <span class="nav-text">pthread_mutex(recursive)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程锁扫盲！"><span class="nav-number">1.</span> <span class="nav-text">线程锁扫盲！</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NSLock"><span class="nav-number">1.1.</span> <span class="nav-text">NSLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSRecursiveLock"><span class="nav-number">1.2.</span> <span class="nav-text">NSRecursiveLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSConditionLock"><span class="nav-number">1.3.</span> <span class="nav-text">NSConditionLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSCondition"><span class="nav-number">1.4.</span> <span class="nav-text">NSCondition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronized"><span class="nav-number">1.5.</span> <span class="nav-text"> @synchronized</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dispatch-semaphore"><span class="nav-number">1.6.</span> <span class="nav-text"> dispatch_semaphore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSSpinLock"><span class="nav-number">1.7.</span> <span class="nav-text"> OSSpinLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pthread-mutex"><span class="nav-number">1.8.</span> <span class="nav-text">pthread_mutex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pthread-mutex-recursive"><span class="nav-number">1.9.</span> <span class="nav-text">pthread_mutex(recursive)</span></a></li></ol></li></ol></div>
             
 
           </div>
