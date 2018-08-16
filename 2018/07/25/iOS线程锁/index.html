@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/07/25/iOS线程锁/index.html">
 <meta property="og:site_name" content="MRain">
 <meta property="og:description" content="线程锁扫盲！">
-<meta property="og:updated_time" content="2018-07-26T13:09:29.456Z">
+<meta property="og:updated_time" content="2018-07-26T13:11:17.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS线程锁">
 <meta name="twitter:description" content="线程锁扫盲！">
@@ -341,10 +341,10 @@
 <p>文档</p>
 <blockquote>
 <ul>
-<li>(instancetype)initWithCondition:(NSInteger)condition; //初始化并设定条件</li>
-</ul>
-<p>@property (readonly) NSInteger condition; //加锁的条件</p>
-<ul>
+<li><p>(instancetype)initWithCondition:(NSInteger)condition; //初始化并设定条件</p>
+</li>
+<li><p>@property (readonly) NSInteger condition; //加锁的条件</p>
+</li>
 <li><p>(void)lockWhenCondition:(NSInteger)condition; //当此函数的 condition 与init的condition 一致时才会加锁</p>
 </li>
 <li><p>(void)unlockWithCondition:(NSInteger)condition; // 这个函数不需要比对条件直接解锁，并设定新的条件</p>
@@ -428,6 +428,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/07/29/Grand-Central-Dispatch/" rel="prev" title="Grand_Central_Dispatch">
+                Grand_Central_Dispatch <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -498,7 +502,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -511,7 +515,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
