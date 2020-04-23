@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Mac," />
 
 
 
@@ -93,16 +93,17 @@
 
 
 
-<meta name="description" content="sudo xcode-select --switch /Applications/Xcode9.app">
+<meta name="description" content="记录一下Mac如何识别NTFS格式的硬盘。">
+<meta name="keywords" content="Mac">
 <meta property="og:type" content="article">
-<meta property="og:title" content="更换默认Xcode">
-<meta property="og:url" content="http://yoursite.com/2017/12/11/更换默认Xcode/index.html">
+<meta property="og:title" content="硬盘NTFS读写">
+<meta property="og:url" content="http://yoursite.com/2018/09/04/硬盘NTFS读写/index.html">
 <meta property="og:site_name" content="MMRain">
-<meta property="og:description" content="sudo xcode-select --switch /Applications/Xcode9.app">
-<meta property="og:updated_time" content="2017-12-11T01:37:41.898Z">
+<meta property="og:description" content="记录一下Mac如何识别NTFS格式的硬盘。">
+<meta property="og:updated_time" content="2018-09-04T07:37:28.852Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="更换默认Xcode">
-<meta name="twitter:description" content="sudo xcode-select --switch /Applications/Xcode9.app">
+<meta name="twitter:title" content="硬盘NTFS读写">
+<meta name="twitter:description" content="记录一下Mac如何识别NTFS格式的硬盘。">
 
 
 
@@ -130,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/11/更换默认Xcode/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/04/硬盘NTFS读写/"/>
 
 
 
 
 
-  <title>更换默认Xcode | MMRain</title>
+  <title>硬盘NTFS读写 | MMRain</title>
   
 
 
@@ -255,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/11/更换默认Xcode/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/04/硬盘NTFS读写/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WangXL">
@@ -272,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">更换默认Xcode</h1>
+          <h1 class="post-title" itemprop="name headline">硬盘NTFS读写</h1>
         
 
         <div class="post-meta">
@@ -284,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T09:37:08+08:00">
-                2017-12-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-04T15:10:26+08:00">
+                2018-09-04
               </time>
             
 
@@ -319,8 +320,22 @@
       
 
       
-        <pre><code>sudo xcode-select --switch /Applications/Xcode9.app
-</code></pre>
+        <h2 id="记录一下Mac如何识别NTFS格式的硬盘。"><a href="#记录一下Mac如何识别NTFS格式的硬盘。" class="headerlink" title="记录一下Mac如何识别NTFS格式的硬盘。"></a>记录一下Mac如何识别NTFS格式的硬盘。</h2><a id="more"></a>
+<p>Mac能识别的都是FAT32格式的，而买个硬盘之后默认的是NTFS格式的，那我怎么读写自己的硬盘呢？</p>
+<p>1、先格式化硬盘格式成FAT32格式的，但是竟然提示Mac硬盘太小格式不了 T^T</p>
+<p>2、下载软件 NTFS FOR MAC 但是试用期只有十天，Google了半天的试用版、激活版、激活码 十天之后完蛋不能用 </p>
+<p>3、修改 /etc/fstab </p>
+<ul>
+<li>插上硬盘后，查看你的硬盘名称</li>
+<li>打开Terminal</li>
+<li>在终端输入sudo nano /etc/fstab 回车 </li>
+<li>现在你看到了一个编辑界面，输入LABEL=AngleDisk none ntfs rw,auto,nobrowse后，回车，再Ctrl+X，再敲击Y，再回车 </li>
+<li>此时，退出你的移动硬盘，再重新插入，你会发现磁盘没有显示再桌面或是Finder之前出现的地方，别慌 </li>
+<li>打开Finder，Command+Shift+G，输入框中输入/Volumes，回车，你就可以看到你的磁盘啦！是可以读写的哟，Enjoy </li>
+<li>方便起见，你可以直接把磁盘拖到Finder侧边栏中，这样下次使用就不用进入到/Volumes目录打开了</li>
+</ul>
+<p>之后就可以痛快的读写你的硬盘了</p>
+
       
     </div>
 
@@ -347,6 +362,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Mac/" rel="tag"># Mac</a>
+          
+        </div>
+      
 
       
       
@@ -356,8 +377,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/23/iOS收集crash日志/" rel="next" title="iOS收集crash日志">
-                <i class="fa fa-chevron-left"></i> iOS收集crash日志
+              <a href="/2018/08/16/iOS重签名/" rel="next" title="iOS重签名">
+                <i class="fa fa-chevron-left"></i> iOS重签名
               </a>
             
           </div>
@@ -366,8 +387,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/25/iOS线程锁/" rel="prev" title="iOS线程锁">
-                iOS线程锁 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/12/iOS企业IPA发布到服务器上（蒲公英下载实现）/" rel="prev" title="iOS企业IPA发布到服务器上（蒲公英下载实现）">
+                iOS企业IPA发布到服务器上（蒲公英下载实现） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -415,8 +436,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -469,6 +499,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#记录一下Mac如何识别NTFS格式的硬盘。"><span class="nav-number">1.</span> <span class="nav-text">记录一下Mac如何识别NTFS格式的硬盘。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
