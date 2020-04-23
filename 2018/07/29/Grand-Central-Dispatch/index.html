@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Grand_Central_Dispatch | MMRain</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="多线程说到了多线程，但是最常用的也就NSThread，GCD，NSOperation NSThread是用的最少的性能也是最低的，相对于NSThread，GCD和NSOperation效率更高，NSOperation也是基于GCD的封装，先看GCD">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Grand_Central_Dispatch | MMRain">
+    <meta name="twitter:description" content="多线程说到了多线程，但是最常用的也就NSThread，GCD，NSOperation NSThread是用的最少的性能也是最低的，相对于NSThread，GCD和NSOperation效率更高，NSOperation也是基于GCD的封装，先看GCD">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Grand_Central_Dispatch | MMRain">
+    <meta property="og:description" content="多线程说到了多线程，但是最常用的也就NSThread，GCD，NSOperation NSThread是用的最少的性能也是最低的，相对于NSThread，GCD和NSOperation效率更高，NSOperation也是基于GCD的封装，先看GCD">
+
+    
+    <meta name="author" content="WangXL">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="MMRain" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/07/29/Grand-Central-Dispatch/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 MMRain 的主页"><img src="/images/avatar.jpg" width="80" alt="MMRain logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for MMRain">MMRain</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+              <li class="navigation__item"><a href="/favourite">黄金屋</a></li>
+            
+              <li class="navigation__item"><a href="/favourite/time.html">时光机</a></li>
+            
+              <li class="navigation__item"><a href="/favourite/image.html">幻想间</a></li>
+            
+              <li class="navigation__item"><a href="/aboutme">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/monniya" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/onlymonniya" title="Twitter" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-07-29T08:25:02.000Z" class="post-list__meta--date date">2018-07-29</time> &#8226; <span class="post-meta__tags tags">于 
+  <a class="tag-link" href="/tags/iOS-多线程-GCD/">iOS 多线程 GCD</a>
+ </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Grand_Central_Dispatch</h1>
+  </header>
+
+  <section class="post">
+    <h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>说到了多线程，但是最常用的也就<strong><em>NSThread，GCD，NSOperation</em></strong> NSThread是用的最少的性能也是最低的，相对于NSThread，GCD和NSOperation效率更高，NSOperation也是基于GCD的封装，先看GCD<br><a id="more"></a></p>
+<h2 id="多线程概念"><a href="#多线程概念" class="headerlink" title="多线程概念"></a>多线程概念</h2><p>到底什么是多线程？使用多线程编程有什么好处？又有什么缺点？需要注意些什么？这些都需要看看<br><em>多线程</em>，都知道CPU是电脑的核心，相当于人类的大脑，一个CPU一次只能执行一个命令，但是现在CPU现在都是多核的，所以我们可以多个CPU核执行多个线程。<br>但是，多线程也容易引发多想问题，比如多个线程同时操作同一组数据会导致数据不一致，停止等待时间的线程会导致多给个线程互相持续等待，使用太多线程会消耗大量的内存。可能会有这么多问题那我们为什么还要使用多线程编程？APP最先启动之后会启动一个主线程，这给线程会一直存在，用来回执用户界面，处理用户的touch事件，如果我们需要处理长时间的、大量的数据操作就不能在主线程中使用，这样会导致APP卡顿，用户无法交互等问题。因此我们需要多线程编程技术，在不影响用户使用的前提下，处理好需要处理的事情。</p>
+<h2 id="Dispatch-Queue"><a href="#Dispatch-Queue" class="headerlink" title="Dispatch Queue"></a>Dispatch Queue</h2><p>苹果官方文档上说将任务提交到dispatch queues中，程序员将任务添加到队列中，之后Dispatch Queue按照提交的顺序按照FIFO(first_in_first_out)的顺序进行处理，但是苹果给出了两种不同的 Dispatch Queue Types ，一种是需要进行等待的DISPATCH_QUEUE_SERIAL（串行队列），串行队列同一时间只能执行一个任务，使用dispatch_queue_create创建队列时可任意生成多个， 多个串行队列同时执行各自的任务追加，也可以并行执行，但是一旦生成队列并追加处理，系统对于一个串行队列就只生成使用一个线程，如果生成无数个，就会生成无数个线程，消耗大量的内存在线程间切换的时候引起大量的上下文切换，大幅降低系统的性能，另一种是不需等待DISPATCH_QUEUE_CONCURRENT（并行队列），Concurrent 虽然是不需要等待可以并行执行多个任务，但是具体处理数量也是由iOS系统的处理书、CPU等多个条件来决定具体的数量的。不管生成多少系统只使用有效管理的线程，因此不会发成串行队列那样的问题。</p>
+<h2 id="Main-Dispatch-Queue-Global-Dispatch-Queue"><a href="#Main-Dispatch-Queue-Global-Dispatch-Queue" class="headerlink" title="Main_Dispatch_Queue/Global_Dispatch_Queue"></a>Main_Dispatch_Queue/Global_Dispatch_Queue</h2><p>我们可以通过 dispatch_get_main_queue 获取到系统的主队列，属于serial_queue，追加到main_queue之后的线程会在主线程的RunLoop执行，我们一般用于在其它队列中异步完成了一些工作后，需要在UI队列中更新界面的情况。<br>dispatch_get_global_queue 是系统提供的另一个现成的队列，它是所有程序都能使用的Concurrent_queue，另外global_queue还提供四种执行的优先级分别是高优先级、默认优先级、低优先级和后台优先级，但是优先级的执行并不是特别精确只是大致的区分，一下是main_dispatch和global_dispatch的获取方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">* 获取主队列</div><div class="line">*/</div><div class="line">dispatch_queue_t  main_queue = dispatch_get_main_queue();</div><div class="line">/*</div><div class="line">* global的优先级</div><div class="line">*/</div><div class="line">#define DISPATCH_QUEUE_PRIORITY_HIGH 2</div><div class="line">#define DISPATCH_QUEUE_PRIORITY_DEFAULT 0</div><div class="line">#define DISPATCH_QUEUE_PRIORITY_LOW (-2)</div><div class="line">#define DISPATCH_QUEUE_PRIORITY_BACKGROUND INT16_MIN</div><div class="line">dispatch_queue_t  global_queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);</div></pre></td></tr></table></figure></p>
+<h2 id="dispatch-queue-create"><a href="#dispatch-queue-create" class="headerlink" title="dispatch_queue_create"></a>dispatch_queue_create</h2><p>以上两种队列都是系统提供的开发者可以直接使用，我们还可以通过dispatch_queue_create()函数来创建，dispatch_queue_create(const char *_Nullable label,dispatch_queue_attr_t _Nullable attr);这个函数有两个参数，第一个参数的作用是什么，刚开始用的时候都是穿的null，在查询资料并进行试验之后发现这个参数是做为这个队列名称的时候显示的，在断点、instruments、crash中都很有作用.<br>在苹果的方法注释中有这么一句话 </p>
+<blockquote>
+<ul>
+<li>When a dispatch queue is no longer needed, it should be released with</li>
+<li>dispatch_release(). Note that any pending blocks submitted to a queue will</li>
+<li>hold a reference to that queue. Therefore a queue will not be deallocated</li>
+<li>until all pending blocks have finished.<br>可见 GCD 也是由自动引用计数管理的，在不需要时，通过dispatch_release进行释放，但是苹果还有一句话</li>
+</ul>
+<p>Important<br>If your app is built with a deployment target of macOS 10.8 and later or iOS v6.0 and later, dispatch queues are typically managed by ARC, so you do not need to retain or release the dispatch queues.</p>
+</blockquote>
+<p>在iOS6以后ARC会自动帮我们处理GCD的引用计数，但是还是必须要进行一下了解，还有一些三方例如SDWebImage还有使用，阅读源码时需要注意。</p>
+<p>第二个参数大家一般都是传 DISPATCH_QUEUE_SERIAL 或者是 DISPATCH_QUEUE_CONCURRENT 但是 苹果注释上说</p>
+<blockquote>
+<p>Passing the result of the dispatch_queue_attr_make_with_qos_class() function to the attr parameter of this function allows a quality of service class and relative priority to be specified for the newly created queue.</p>
+</blockquote>
+<p>这个 dispatch_queue_attr_make_with_qos_class 的作用是返回可以提供给dispatch_queue_create（）或dispatch_queue_create_with_target（）的属性值，以便为队列分配QOS类和相对优先级。 可以通过这个函数来自定义一个优先级自定、队列类型自定的 attr 传给 dispatch_queue_create （目前还没搞懂，未完待续）</p>
+<p>常用代码：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">dispatch_async</span>(dispatch_queue_create(<span class="string">"com..GCD"</span>, DISPATCH_QUEUE_CONCURRENT), ^&#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"执行代码"</span>);</div><div class="line">            <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</div><div class="line">                <span class="built_in">NSLog</span>(<span class="string">@"主线程刷新"</span>);</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="dispatch-set-target-queue"><a href="#dispatch-set-target-queue" class="headerlink" title="dispatch_set_target_queue"></a>dispatch_set_target_queue</h2><p>dispatch_set_target_queue 是将一个队列的优先级设置成与另一个队列一致，这两个队列就会同步执行，而不是并行执行， 方便调整队列顺序</p>
+<h2 id="dispatch-after-dispatch-time-t-when-dispatch-queue-t-Nonnull-queue-void-block"><a href="#dispatch-after-dispatch-time-t-when-dispatch-queue-t-Nonnull-queue-void-block" class="headerlink" title="dispatch_after(dispatch_time_t when, dispatch_queue_t  _Nonnull queue, ^(void)block)"></a>dispatch_after(dispatch_time_t when, dispatch_queue_t  _Nonnull queue, ^(void)block)</h2><p>dispatch_after 的作用是延迟一段时间把一项任务提交到队列中执行，这里是将在约定的时间之后将任务添加到队列中，而不是立即执行任务，会有一些感觉不到的微小的延迟，一般常用的也就是主线程的一个等待任务</p>
+<p>例如：<br>dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)( 时间 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{<br> 任务<br>});<br>上面的代码 在规定时间之后，将任务添加到主线程中等待执行。 与NSObject 的 performSelector 和 NStimer 类似但是不会有NSTimer循环引用的问题。</p>
+<h2 id="dispatch-apply"><a href="#dispatch-apply" class="headerlink" title="dispatch_apply"></a>dispatch_apply</h2><p>dispatch_apply(size_t iterations, dispatch_queue_t  _Nonnull queue, ^(size_t)block)<br>第一个参数为重复次数、第二个参数为添加任务的队列、第三个为添加的任务。</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/08/16/iOS重签名/" title="iOS重签名">iOS重签名</a></h2>
+                <p class="excerpt">
+                
+                iOS 重签名  
+重签名咋签的？
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-16T07:30:29.000Z" class="post-list__meta--date date">2018-08-16</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/08/16/iOS重签名/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/07/25/iOS线程锁/" title="iOS线程锁">iOS线程锁</a></h2>
+                <p class="excerpt">
+                
+                线程锁扫盲！
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-07-25T06:50:23.000Z" class="post-list__meta--date date">2018-07-25</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/多线程-iOS-锁/">多线程 iOS 锁</a>
+</span><a class="btn-border-small" href="/2018/07/25/iOS线程锁/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2020 WangXL - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
