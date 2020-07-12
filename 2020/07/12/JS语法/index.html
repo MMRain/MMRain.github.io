@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>JS语法 | MMRain</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="js高级学习笔记
+JavaScript 简称JS
+JavaScript 分三个部分：
+1 EMCAScript标准 — 基础的语法
+2 DOM Document Object Model  文档对象模型
+3 BOM Browser Object Model  浏览器对象">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="JS语法 | MMRain">
+    <meta name="twitter:description" content="js高级学习笔记
+JavaScript 简称JS
+JavaScript 分三个部分：
+1 EMCAScript标准 — 基础的语法
+2 DOM Document Object Model  文档对象模型
+3 BOM Browser Object Model  浏览器对象">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JS语法 | MMRain">
+    <meta property="og:description" content="js高级学习笔记
+JavaScript 简称JS
+JavaScript 分三个部分：
+1 EMCAScript标准 — 基础的语法
+2 DOM Document Object Model  文档对象模型
+3 BOM Browser Object Model  浏览器对象">
+
+    
+    <meta name="author" content="WangXL">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="MMRain" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2020/07/12/JS语法/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 MMRain 的主页"><img src="/images/avatar.jpg" width="80" alt="MMRain logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for MMRain">MMRain</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
+            
+              <li class="navigation__item"><a href="/jianli.html">简历</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/monniya" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2020-07-12T04:40:54.000Z" class="post-list__meta--date date">2020-07-12</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">JS语法</h1>
+  </header>
+
+  <section class="post">
+    <p><em>js高级学习笔记</em></p>
+<p>JavaScript 简称JS</p>
+<p>JavaScript 分三个部分：</p>
+<p>1 EMCAScript标准 — 基础的语法</p>
+<p>2 DOM Document Object Model  文档对象模型</p>
+<p>3 BOM Browser Object Model  浏览器对象<br><a id="more"></a></p>
+<!-- 什么是JS？ -->
+<!-- 是一门脚本语言 解释性语言  -->
+<p>JavaScript 是一种解释型的脚本语言</p>
+<!-- 解释性语言： -->
+<p>目前语言分为解释性语言和编译型语言：</p>
+<p>编译型语言在 C、C++、Java 计算机运行代码前，先把代码翻译成计算机可以理解的文件，比如EXE文件。这样说有些不太准确，实际上在生成EXE文件之前，还要做一个整合的操作，但这不是本节要关心的。这个EXE文件只需要经过一次编译就可以运行了，而且除非修改代码，否则都不需要重新编译。所以编译型语言的程序执行效率高。</p>
+<p>解释型语言则不同，解释型语言的程序不需要在运行前编译，在运行程序的时候才翻译，专门的解释器负责在每个语句执行的时候解释程序代码。</p>
+<!-- 脚本语言： -->
+<p>脚本通常以文本（如ASCII)保存，只在被调用时进行解释或编译。<br>用脚本语言开发的程序在执行时，由其所对应的解释器（或称虚拟机）解释执行。系统程序设计语言是被预先编译成机器语言而执行的。</p>
+<!-- 是一门弱类型语言 -->
+<p>javascript只有一种类型var ，为变量赋值时会自动判断类型并进行转换，所以javascript是弱语言，就体现在变量定义类型VAR上了。</p>
+<!-- 是一门基于对象的语言 -->
+<p>基于对象（Object-Based），和面向对象（object-oriented）不是一个概念，不提供抽象、继承、重载等有关面向对象语言的功能。</p>
+<p>对象具有唯一标识性：即使完全相同的两个对象，也并非同一个对象。 （不是同一个地址内存）<br>对象有状态：对象具有状态，同一对象可能处于不同状态下。（属性）<br>对象具有行为：即对象的状态可能因为它的行为产生变迁。（方法）</p>
+<p>在 JavaScript中，将状态和行为统一抽象为“属性”，考虑到 JavaScript 中将函数设计成一种特殊对象，所以 JavaScript中的行为和状态都能用属性来抽象。</p>
+<p>JavaScript的对象设计跟目前主流基于类的面向对象差异非常大。而事实上，这样的对象系统设计虽然特别，但是JavaScript提供了完全运行时的对象系统，这使得它可以模仿多数面向对象编程方式，所以它也是正统的面向对象语言。</p>
+<!-- 是一门动态类型语言 -->
+<p>静态类型与动态类型的区别：</p>
+<p>静态类型语言的优点：<br>  1. 在编译时就能发现类型不匹配的错误，编辑器可以帮助我们提前避免程序在运行期间有可能发生的一些错误。<br>  2. 如果在程序中明确地规定了数据类型，编译器还可以针对这些信息对程序进行一些优化工作，提高程序执行速度。<br>静态类型语言的缺点：<br>  1. 迫使程序员依照强契约来编写程序，为每个变量规定数据类型，归根结底只是辅助我们编写可靠性高程序的一种手段，而不是编写程序的目的，毕竟大部分人编写程序的目的是为了完成需求交付生产。<br>  2. 类型的声明也会增加更多的代码，在程序编写过程中，这些细节会让程序员的精力从思考业务逻辑上分散开来。</p>
+<p>动态类型语言的优点：<br>  编写的代码数量更少，看起来也更加简洁，程序员可以把精力更多地放在业务逻辑上面。虽然不区分类型在某些情况下会让程序变得难以理解，但整体而言，代码量越少，越专注于逻辑表达，对阅读程序是越有帮助的。<br>动态类型语言的缺点：<br>  无法保证变量的类型，从而在程序的运行期有可能发生跟类型相关的错误。这好像在商店买了一包牛肉辣条，但是要真正吃到嘴里才知道是不是牛肉味。</p>
+<p>var 和 let 的区别：</p>
+<p>ES6引入let关键字，在JS中var与let都是用来声明变量，var没有块级作用域，let有。<br>var允许重复声明覆盖外层同名的变量，let因为块级作用域所以不会覆盖父级同名的变量</p>
+<p>动态页面<br>1、页面有HTML + CSS + JS<br>2、服务器动态生成的页面</p>
+<p>JS最初的目的： 解决用户和服务器之间的交互问题；<br>JS做图形处理，建立服务器，编译解释器，图形界面，数据库，音频视频播放，通信等。</p>
+<!-- 数据类型 -->
+<p>基本类型：</p>
+<p>Undefined</p>
+<p>Null </p>
+<p>Boolean</p>
+<p>Number</p>
+<p>String </p>
+<p>引用类型：</p>
+<p>Object </p>
+<p>Array </p>
+<p>Date </p>
+<p>Function  </p>
+<p>内置对象：</p>
+<p>Math</p>
+<!-- 值类型和引用类型的差别-->
+<p>值类型的内存中占据股东黛西的空间，因此被保留在栈内存中。<br>从一个变量向另一个变量复制基本类型的值，复制的是值得副本。<br>应用类新的值是对象，保存在堆内存中。<br>包含引用类型值得变量实际上包含的不是对象本身，而是指向该对象的指针。<br>从一个变量向另一个变量引用类型的值得时候，复制的是引用的指针，因此两个变脸最终指向同一个对象；</p>
+<!-- 预解析 -->
+<p>全局预解析 （所有变量和函数的声明都会提前：同名函数和变量函数的优先级高）<br>函数内部预解析（所有的变量、函数和形参都会参与预解析）</p>
+<!-- 创建对象的三种方式 -->
+<p>1、 字面量的方式进行创建</p>
+<pre><code>var person
+{
+    name：王；
+    age： 30；
+    eat.function()
+    {
+        console.log(&quot;吃鸡蛋&quot;);
+    }
+}
+</code></pre><p>2、调用系统的构造函数</p>
+<pre><code>var person = new  Object();
+person.name = &quot;&quot;;
+person.age = &quot;&quot;;
+person.eat = function()
+{
+
+};
+</code></pre><p>3、自定义构造函数</p>
+<p>function Person(name,age,sex)<br>{<br>    this.name = name;<br>    this.age  = age;<br>    this.sex  = sex;<br>    this.play = function ()<br>    {</p>
+<pre><code>};
+</code></pre><p>}</p>
+<p>4、工厂模式创建对象</p>
+<p>function createPerson(name,age)<br>{<br>    var obj = new Object();<br>    obj.name = name;<br>    obj.age = age;<br>    obj.sayHi = function ()<br>    {</p>
+<pre><code>}
+return obj;
+</code></pre><p>}</p>
+<!-- 工厂模式和自定义构造函数的区别 -->
+<p>共同点： 都是函数， 都可以创建对象，都可以传入参数</p>
+<p>工厂模式：（类似OC的二次封装）</p>
+<p>函数名小写<br>有new<br>有返回值<br>new之后的对象是当前的对象<br>直接调用函数就可以创建对象</p>
+<p>自动以构造函数：（OC的实例方法）</p>
+<p>函数名首字母大写<br>没有new<br>没有返回值<br>this是当前的对象<br>通过new的方式来创建当前的对象。</p>
+<!-- 构造函数和实例对象之间的关系 -->
+<p>构造函数创建实例对象</p>
+<p>构造函数会显示对象的结构</p>
+<p>function Person (name,age)<br>{</p>
+<p>}</p>
+<p>var per = new Person(“name”,”age”);</p>
+<p>constructor 构造函数的构造器</p>
+<p>per.constructor == Person  yes</p>
+<p>per.<em>proto</em>.constructor == Person yes</p>
+<p>per.<em>prpto</em>.constructor == Person.prototype.constructor yes</p>
+<!-- 原型         -------------------------    疑问保留 -->
+<p>通过原型来添加方法，解决数据共享，节省内存空间</p>
+<p>在构造函数中定义的属性和方法，在实例化对象的时候，实例对象的属性和方法都是在自身空间中存在的，如果是多个对象，这些属性和方法都会在单独的控件中存在，浪费内存空间，所以为了数据共享，想要把节省的属性或方法写在原型对象中，达到了数据共享，实现了节约内存空间。</p>
+<p>每个函数都有prototype(原型)属性，这个属性是一个指针，指向一个对象，这个对象的用途是包含特定类型的所有实例共享的属性和方法，即这个原型对象是用来给实例共享属性和方法的。<br>而每个实例内部都有一个指向原型对象的指针。</p>
+<p>function Person (name,age){<br>    this.name = name;<br>    this.age  = age;<br>}</p>
+<p>Person.prototype.eat = function()<br>{<br>    console.log(“”);<br>}</p>
+<p>var p1 = new Person(“小明”,20);<br>var p2 = new Person(“小红”,20);</p>
+<p>p1.eat == p2.eat  true </p>
+<!-- 构造函数   实例化对象   原型对象之间的关系 -->
+<p>原型对象就是所有对象的父类？只不过需要共享的数据是可变的？属性？方法？</p>
+<p>1、构造函数可以实例化对象 </p>
+<p>2、构造函数有一个属性叫prototype，是构造函数的原型对象</p>
+<p>3、构造函数的原型对象（prototype）中有一个constructor构造器，这个构造器指向的就是原型对象所在的构造函数</p>
+<p>4、实例对象的原型对象（<strong>proto</strong>）指向的是该构造函数的原型对象</p>
+<p>5、构造函数的原型对象（prototype）中的方法是可以被实例对象直接访问的</p>
+<!-- 什么样的数据需要写在原型中？ -->
+<p>不需要共享的数据写在构造行数中，需要共享的数据写在原型中</p>
+<p>//构造函数<br>    function Student(name,age,sex)<br>    {<br>        this.name = name ;<br>        this.age = age;<br>        this.sex = sex;<br>    }</p>
+<pre><code>//所有的学生每天要写500行代码
+Student.prototype.study = function()
+{
+    console.log(&quot;学习，写500行代码&quot;);
+}
+
+Student.prototype.eay = function()
+{
+    console.log(&quot;吃三顿饭&quot;);
+}
+
+ver stu = new Student(&quot;晨光&quot;,57,&quot;女&quot;);
+
+console.dir(Student);
+</code></pre><p>原型的写法</p>
+<pre><code>Student.prototype=
+{
+    //手动修改构造器的指向
+
+    constructor:Student,
+    height:&quot;188&quot;,
+    weight:&quot;55kg&quot;,
+    study:function()
+    {
+        console.log(&quot;学习好开心啊&quot;);
+    },
+    eat:function()
+    {
+        console.log(&quot;我要吃好吃的&quot;);
+    }
+}
+</code></pre><p>原型中的方法是可以互相访问的。</p>
+<!-- 实例对象使用属性和方法的搜索步骤 -->
+<p>实例对象使用属性或方法，先在实例中查找，找到了直接使用，找不到则去实例对象的<strong>proto</strong>指向的原型对象prototype中找，找到了使用，找不到报错</p>
+<!-- 可以通过原型 为内置对象添加原型方法  为String Array等添加自定义方法 类似分类或扩展-->
+<!-- 自执行函数 ？！ 就是一个语句？在（）内定义函数？ -->
+<!-- 原型链 -->
+<p>实例对象中有<strong>proto</strong>原型</p>
+<p>构造函数中有prototype原型</p>
+<p>prototype是对象</p>
+<p>所以，prototype这个对象中也有<strong>proto</strong>,那么指向了哪里？</p>
+<p>实例对象中的<strong>proto</strong>指向的是构造函数中的prototype</p>
+<p>所以，prototype这个对象中的<strong>proto</strong>指向的应该是某个构造函数的原型prototype</p>
+<p>per实例对象的<strong>proto</strong> —&gt;Person.protorype的<strong>proto</strong>—–&gt;Object.prototype的—<strong>proto</strong>是null。</p>
+<!-- 继承 -->
+<p>继承的几种方式：</p>
+<p>原型继承：</p>
+<p>通过prototype改变原型指向<br>问题：当实例中存在和原型对象上同名的属性时，会自动屏蔽原型对象上的同名属性</p>
+<p>借用构造函数继承：</p>
+<p>主要解决属性的问题。</p>
+<p>组合继承： </p>
+<p>原型继承 + 借用构造函数继承<br>既能解决属性问题，又能解决方法问题</p>
+<p>拷贝继承：就是把对象中需要共享的属性或方法，直接遍历的方式复制到另一个对象中</p>
+<!-- 函数 -->
+<p>JavaScript 中的函数分为 函数声明和函数表达式</p>
+<p>函数声明：<br>function ()<br>{</p>
+<p>}</p>
+<p>函数表达式</p>
+<p>var ff = function()<br>{</p>
+<p>};</p>
+<p>/*<br>    函数中的this的指向</p>
+<pre><code>普通函数中的this是谁？     -------&gt; window
+
+对象.方法中的this是谁？    --------&gt; 当前的实例对象
+
+定时器方法中的this是谁？   ---------&gt; window 
+
+构造函数中的this是谁？     --------&gt; 实例对象
+
+原型对象方法中的this是谁？ ---------&gt; 实例对象
+</code></pre><p>*/</p>
+<p>apply 和 call 的作用</p>
+<p>可以改变this的指向</p>
+<p>传递不同的参数</p>
+<p>一个对象想要使用别的对象的方法，并且希望这个方法或者参数是当前对象的，那么就可以使用apply或call的方法改变this的指向。</p>
+<p>function f1(){<br>    console.log(“结果是：” = （x + y）+this);<br>}<br>f1(10,20) ===&gt; 30 window;</p>
+<p>f1.apply();<br>f1.call();</p>
+<p>f1.apply(null,[10,20]);<br>f1.call(null,10,20);</p>
+<p>//apply和call方法中如果没有传入参数，或者传入的是null，那么调用该方法的函数对象中的this就是默认的window。</p>
+<p>var obj =<br>{<br>    age:10,<br>    sex:”男”<br>}</p>
+<p>window.f1.apply(obj,[10,20]);</p>
+<p>this ====&gt; obj </p>
+<p>对象想要调用一个方法，这个对象必须要在该对象中，或者在该对象的原型对象中。<br>所有的函数都可以调用apply和call方法是因为这两个方法并不是在这个实例对象中，<br>而是在Function的prototype中。</p>
+<p>所有对象都有<strong>proto</strong>属性，是用来通过<strong>proto</strong>找到它的原型即prototype，function声明的变量的<strong>proto</strong>指向Function的prototype，其它对象的<strong>proto</strong>指向Object的prototype</p>
+<p>Foo.prototype.<strong>proto</strong> === Object.prototype; // true<br>obj.show.prototype.<strong>proto</strong> === Object.prototype; // true<br>Function.prototype.<strong>proto</strong> === Object.prototype; // true<br>Object.prototype.<strong>proto</strong> === null; // true</p>
+<!-- 函数的属性 -->
+<p>name  ——&gt;  函数的名字，name属性是只读的，不能修改</p>
+<p>agruments ——-&gt; 实参的个数</p>
+<p>length  ——–&gt;  形参的个数</p>
+<p>caller  ———&gt; 调用者(f1函数在f2函数中调用，f1的caller就是f2)</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">以前の記事</span>
+                <h2 class="post-list__post-title post-title"><a href="/2020/07/09/数据结构和算法/" title="算法">算法</a></h2>
+                <p class="excerpt">
+                
+                
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2020-07-09T14:22:34.000Z" class="post-list__meta--date date">2020-07-09</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2020/07/09/数据结构和算法/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2020 WangXL - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
