@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>iOS部分圆角 | MMRain</title>
+    <title>算法 | MMRain</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,15 +12,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="iOS控件部分圆角设置">
+    <meta name="description" content="">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="iOS部分圆角 | MMRain">
-    <meta name="twitter:description" content="iOS控件部分圆角设置">
+    <meta name="twitter:title" content="算法 | MMRain">
+    <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="iOS部分圆角 | MMRain">
-    <meta property="og:description" content="iOS控件部分圆角设置">
+    <meta property="og:title" content="算法 | MMRain">
+    <meta property="og:description" content="">
 
     
     <meta name="author" content="WangXL">
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="MMRain" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com/2017/10/11/iOS部分圆角/"/>
+    <link rel="canonical" href="http://yoursite.com/2020/07/09/数据结构和算法/"/>
 
                  
 </head>
@@ -133,25 +133,17 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2017-10-11T04:17:10.000Z" class="post-list__meta--date date">2017-10-11</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <time datetime="2020-07-09T14:22:34.000Z" class="post-list__meta--date date">2020-07-09</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
        Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">iOS部分圆角</h1>
+    <h1 class="post-title">算法</h1>
   </header>
 
   <section class="post">
-    <p>  iOS控件部分圆角设置</p>
-<a id="more"></a>
-<p>  如果设置四个角所有的圆角直接用layer的cornerRadius设置即可。</p>
-<p>  但是只设置两个或三个cornerRadius就不能用了。</p>
-<p>  但是可以用 UIBezierPath 来设置</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(120, 10, 80, 80)];</div><div class="line">view2.backgroundColor = [UIColor redColor];</div><div class="line">[self.view addSubview:view2];</div><div class="line">  </div><div class="line">UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:view2.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(10, 10)];</div><div class="line"></div><div class="line">CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];</div><div class="line">maskLayer.frame = view2.bounds;</div><div class="line">maskLayer.path = maskPath.CGPath;</div><div class="line">view2.layer.mask = maskLayer;</div></pre></td></tr></table></figure>
-<p>  以上代码设置 View2 下方两个圆角 圆角度数为 10</p>
-<p>  其中，<br>  byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight<br>  指定了需要成为圆角的角。该参数是UIRectCorner类型的，可选的值有：<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">* UIRectCornerTopLeft</div><div class="line">* UIRectCornerTopRight</div><div class="line">* UIRectCornerBottomLeft</div><div class="line">* UIRectCornerBottomRight</div><div class="line">* UIRectCornerAllCorners</div></pre></td></tr></table></figure></p>
-
+    
   </section>
 
 </article>
@@ -159,31 +151,26 @@
 <section class="read-more">
            
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">Newer Post</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/10/17/JSON字典和JSON字符串相互转换/" title="JSON字典和JSON字符串相互转换">JSON字典和JSON字符串相互转换</a></h2>
-                <p class="excerpt">
-                
-                JSON字典和JSON字符串相互转换
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2017-10-17T06:45:44.000Z" class="post-list__meta--date date">2017-10-17</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/17/JSON字典和JSON字符串相互转换/">继续阅读</a></div>
-                           
-            </div>
         
         
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">Older Post</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/10/09/NSUserDefaults保存报错/" title="NSUserDefaults保存报错">NSUserDefaults保存报错</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2020/03/16/JS语言基础/" title=""></a></h2>
                 <p class="excerpt">
                 
-                NSUserDefaults保存报错问题
+                js高级学习笔记
+JavaScript 简称JS
+JavaScript 分三个部分：
+1 EMCAScript标准 — 基础的语法
+2 DOM Document Object Model  文档对象模型
+3 BOM Browser Object Model  浏览器对象
 
+
+JavaScript 是
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2017-10-09T06:26:48.000Z" class="post-list__meta--date date">2017-10-09</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/09/NSUserDefaults保存报错/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2020-03-16T04:58:25.451Z" class="post-list__meta--date date">2020-03-16</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2020/03/16/JS语言基础/">继续阅读</a></div>
                        
             </div>
         
